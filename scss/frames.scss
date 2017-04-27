@@ -1,0 +1,59 @@
+$frames_durations: (
+  'one': 0.25s,
+  'two': 0.5s,
+  'three': 0.75s,
+  'four': 1s,
+) !default;
+
+// Define keyframes that determine the start and end state of the DOM element
+@-webkit-keyframes fadeIn { from { opacity: 0; opacity: 1\9; } to { opacity: 1; } }
+@-moz-keyframes fadeIn { from { opacity: 0; opacity: 1\9; } to { opacity: 1; } }
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    opacity: 1\9; // IE9 only
+  } to {
+    opacity: 1;
+  }
+}
+
+.fadein {
+  opacity: 0; // start invisible
+
+  -webkit-animation: fadeIn ease-in 1;
+  -moz-animation: fadeIn ease-in 1;
+  animation: fadeIn ease-in 1;
+
+  // ensure that once the animation is complete, the elements remain at opacity 1
+  -webkit-animation-fill-mode: forwards;
+  -moz-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+
+  -webkit-animation-duration: 1s;
+  -moz-animation-duration: 1s;
+  animation-duration: 1s;
+
+  &.frame-one {
+    -webkit-animation-delay: map-get($frames_durations, 'one');
+    -moz-animation-delay: map-get($frames_durations, 'one');
+    animation-delay: map-get($frames_durations, 'one');
+  }
+
+  &.frame-two {
+    -webkit-animation-delay: map-get($frames_durations, 'two');
+    -moz-animation-delay: map-get($frames_durations, 'two');
+    animation-delay: map-get($frames_durations, 'two');
+  }
+
+  &.frame-three {
+    -webkit-animation-delay: map-get($frames_durations, 'three');
+    -moz-animation-delay: map-get($frames_durations, 'three');
+    animation-delay: map-get($frames_durations, 'three');
+  }
+
+  &.frame-four {
+    -webkit-animation-delay: map-get($frames_durations, 'four');
+    -moz-animation-delay: map-get($frames_durations, 'four');
+    animation-delay: map-get($frames_durations, 'four');
+  }
+}
